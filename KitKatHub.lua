@@ -12,9 +12,10 @@ assert(response.StatusCode == 200, "Did not return a 200 status code")
 local data = game:GetService("HttpService"):JSONDecode(response.Body)
 assert(type(data) == "table" and type(data["user-agent"]) == "string", "Did not return a table with a user-agent key")
 
-if not data["user-agent"]:lower():match("flexer") or not data["user-agent"]:lower():match("xeno") then
-    game.Players.LocalPlayer:Kick("KitKat Hub Not Support : "..data["user-agent"])
+if not (data["user-agent"]:lower():match("flexer") or data["user-agent"]:lower():match("xeno")) then
+    game.Players.LocalPlayer:Kick("KitKat Hub Not Support: " .. data["user-agent"])
 end
+
 
 
 local pd = game.placeId
